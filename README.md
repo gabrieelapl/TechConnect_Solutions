@@ -1,32 +1,42 @@
 ## Gráfico de Gantt
 ```mermaid
 gantt
-    title TechConnect Solutions — Cronograma 6 meses
-    dateFormat  MM
-    axisFormat  Mês %m
+    title TechConnect Solutions
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d/%m
 
     section Planejamento
-    Levantamento de requisitos - GP e Analista     :a1, 01, 1M
-    Documentação funcional - Analista              :a2, 01, 2M
-    Rascunhos das telas - Designer                 :a3, 01, 2M
-    Layout definitivo - Designer                   :a4, 02, 2M
+    Levantamento de requisitos        :a1, 2025-01-01, 14d
+    Documentação funcional            :a2, after a1, 14d
+    Rascunhos das telas               :b1, after a1, 14d
+    Layout do sistema                 :b2, after b1, 14d
+
+    section Configuração
+    Config. do ambiente de dev.       :c1, 2025-02-01, 21d
+    Criação do banco de dados         :c2, after c1, 14d
 
     section Desenvolvimento
-    Config. ambiente de dev. - Devs                :b1, 02, 1M
-    Criação do banco de dados - Devs               :b2, 02, 1M
-    Módulo de login - Devs (E1)                    :b3, 02, 2M
-    CRUD de empresas - Devs (E2)                   :b4, 03, 2M
-    Upload de logotipo - Devs e Designer (E3)      :b5, 04, 1M
-    Relatórios PDF/Excel - Devs (E4)               :b6, 04, 1M
-    Painel administrativo - Devs e Analista (E5)   :b7, 04, 2M
+    Módulo de login                   :crit, d1, after c2, 21d
+    Marco E1 - Login validado         :milestone, after d1, 0d
+    CRUD de empresas                  :crit, e1, after d1, 14d
+    Marco E2 - CRUD validado          :milestone, after e1, 0d
+    Upload de logotipo                :crit, f1, after e1, 14d
+    Marco E3 - Upload validado        :milestone, after f1, 0d
+    Relatórios PDF e Excel            :crit, g1, after f1, 14d
+    Marco E4 - Relatórios validados   :milestone, after g1, 0d
+    Painel administrativo             :crit, h1, after g1, 14d
+    Marco E5 - Painel validado        :milestone, after h1, 0d
 
     section Testes e Entrega
-    Testes unitários/integração - QA               :c1, 05, 2M
-    Testes de usabilidade - QA e Devs              :c2, 06, 1M
-    Implantação e entrega final - GP e Devs        :c3, 06, 1M
+    Testes unitários e integração     :crit, i1, after h1, 14d
+    Testes de usabilidade             :i2, after i1, 7d
+    Implantação final                 :crit, j1, after i2, 7d
+    Marco E6 - Entrega final          :milestone, after j1, 0d
 ```
 
-## Matriz Crystal Clear
+---
+
+## Situações de Atenção
 ```mermaid
 quadrantChart
     title Matriz Crystal - Prioridade x Risco
